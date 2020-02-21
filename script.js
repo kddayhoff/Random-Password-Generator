@@ -19,20 +19,39 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
+var password = "";
 var lowerCase = "abcdefghijklmnopqrstuvwxyz";
 var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var number = "0123456789";
 var chars = "!@#$%^&*";
+var characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+  
+var pwLength = "How many characters do you want in your password?";
 
-var confirmLower = prompt("Do you want lowercase letters?");
-var confirmUpper = prompt("Do you want uppercase letters?");
-var confirmNumber = prompt("Do you want numbers?");
-var confirmChars = prompt("Do you want special characters?")
+var pwLengthInput = prompt(pwLength);
 
-if (true) {
-confirm("Generate New Password");
+while (
+  pwLength !== null &&
+  (
+  isNaN(pwLengthInput) ||
+      !((+pwLengthInput >=8 && +pwLengthInput <=128))
+  )
+)
+{
+alert ("Password length must be a number and 1 to 128 characters");
+pwLengthInput = prompt(pwLength);
 }
-else {
-  alert("Goodbye");
-}
+
+/*var confirmLower = confirm("Do you want lowercase letters?");
+var confirmUpper = confirm("Do you want uppercase letters?");
+var confirmNumber = confirm("Do you want numbers?");
+var confirmChars = confirm("Do you want special characters?");
+//need to figure out how to input the number the user chooses into the less than 6, is it i?*/
+//need to 
+
+
+while (password.length < 10) {
+  password += characters[Math.floor(Math.random() * characters.length)];
+} 
+console.log(password);
+
