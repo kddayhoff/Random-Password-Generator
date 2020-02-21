@@ -1,3 +1,10 @@
+
+//pseudo code:
+    //need variables -- variables for length of password, arrays for characters and numbers.
+    //click button on page to start titled "new password generator"
+    //a series of prompts, criteria: length is 8-128 characters, prompt for lowercase, prompt for uppercase, prompt for numeric, prompt for special characters - 5 prompts total
+    //would need 5 loops? -- one big one to run all the criteria chose. Ex: if 8 characters were chosen, it would have to run through all options chosen 8 times, with math.random loop (I think). if else statement for lowercase prompt, if the lowercase is selected, then the randomizer would run it, if not selected (cancel), the randomizer would skip this statement, same with numberic and special characters.
+    //random generator from character in a string for each spot 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
@@ -12,3 +19,20 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var number = "0123456789";
+var chars = "!@#$%^&*";
+
+var confirmLower = prompt("Do you want lowercase letters?");
+var confirmUpper = prompt("Do you want uppercase letters?");
+var confirmNumber = prompt("Do you want numbers?");
+var confirmChars = prompt("Do you want special characters?")
+
+if (true) {
+confirm("Generate New Password");
+}
+else {
+  alert("Goodbye");
+}
