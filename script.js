@@ -24,12 +24,13 @@ var lowerCase = "abcdefghijklmnopqrstuvwxyz";
 var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var number = "0123456789";
 var chars = "!@#$%^&*";
-var characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
-  
+//var characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+
+//click button event to start prompts
+function generatePassword() {
 var pwLength = "How many characters do you want in your password?";
-
+//pwLengthInput will be assigned (=) whatever the user puts in
 var pwLengthInput = prompt(pwLength);
-
 while (
   pwLength !== null &&
   (
@@ -38,20 +39,39 @@ while (
   )
 )
 {
-alert ("Password length must be a number and 1 to 128 characters");
+alert ("Password length must be a number and 8 to 128 characters");
 pwLengthInput = prompt(pwLength);
 }
 
-/*var confirmLower = confirm("Do you want lowercase letters?");
+//confirm/deny prompts for user choices
+var confirmLower = confirm(pwLower);
+var pwLower = confirm("Do you wanter lowercase letters?");
+if (pwLower === true)
+
 var confirmUpper = confirm("Do you want uppercase letters?");
 var confirmNumber = confirm("Do you want numbers?");
 var confirmChars = confirm("Do you want special characters?");
+}
 //need to figure out how to input the number the user chooses into the less than 6, is it i?*/
 //need to 
 
+//below is master variable that all CHOSEN strings should be added together
+var pwTotal =
 
-while (password.length < 10) {
-  password += characters[Math.floor(Math.random() * characters.length)];
+while (password.length < pwLengthInput ) {
+  password += random2[Math.floor(Math.random() * random2.length)];
 } 
 console.log(password);
 
+
+//The code below is the original randomizer I found, it works in the console
+//var password = "";
+//var characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+//while (password.length < 10) {
+ // password += characters[Math.floor(Math.random() * characters.length)];
+//} 
+//console.log(password);
+ 
+
+//while(howlongpassword(input of how many characters they way) > longer than password array) -- keeps adding them together until reach input # 
+//available character array
