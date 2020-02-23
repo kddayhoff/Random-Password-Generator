@@ -20,15 +20,16 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 var password = "";
-var lowerCase = "abcdefghijklmnopqrstuvwxyz";
-var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var number = "0123456789";
-var chars = "!@#$%^&*";
+//var pwLower = "abcdefghijklmnopqrstuvwxyz";
+//var pwUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var pwNumber = "0123456789";
+var psChars = "!@#$%^&*";
 //var characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
 
 //click button event to start prompts
 function generatePassword() {
 var pwLength = "How many characters do you want in your password?";
+
 //pwLengthInput will be assigned (=) whatever the user puts in
 var pwLengthInput = prompt(pwLength);
 while (
@@ -44,33 +45,47 @@ pwLengthInput = prompt(pwLength);
 }
 
 //confirm/deny prompts for user choices
-var confirmLower = confirm(pwLower);
-var pwLower = confirm("Do you wanter lowercase letters?");
-if (pwLower === true)
 
-var confirmUpper = confirm("Do you want uppercase letters?");
+var pwLowerConfirm = confirm("Do you wanter lowercase letters?");
+if (pwLowerConfirm === true) {
+//pwLower = ["a", "b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+  /*for (i = 0; i < pwLower.length; i++) {
+  userChoices.push(pwLower[i]);
+}*/
+}
+var pwUpper = confirm("Do you want uppercase letters?");
+if (pwUpper === true) {
+  pwUpper = ["A", "B", "C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+  //for (i = 0; i < pwUpper.length; i++) {
+    //userChoices.push(pwUpper[i]);
+ // }
+}
+
 var confirmNumber = confirm("Do you want numbers?");
 var confirmChars = confirm("Do you want special characters?");
 }
-//need to figure out how to input the number the user chooses into the less than 6, is it i?*/
-//need to 
+//need to figure out how to input the number the user chooses into the randomizer for how many times it is run
+//need to to figure out how to get users criteria into the userChoices variable and run that along with the length of the chose password
 
-//below is master variable that all CHOSEN strings should be added together
-var pwTotal =
+var userChoices = "" 
+console.log(userChoices);
 
-while (password.length < pwLengthInput ) {
-  password += random2[Math.floor(Math.random() * random2.length)];
+while (password.length < pwLengthInput) {
+  password += userChoices[Math.floor(Math.random() * userChoices.length)];
 } 
 console.log(password);
 
+/*for(var i = 0; i < pwLengthInput; i++){
+  newPassword += userChoices[Math.floor(Math.random() * userChoices.length)];
+}
+return newPassword;
 
-//The code below is the original randomizer I found, it works in the console
 //var password = "";
 //var characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
-//while (password.length < 10) {
- // password += characters[Math.floor(Math.random() * characters.length)];
-//} 
-//console.log(password);
+/*while (password.length < 10) {
+  password += characters[Math.floor(Math.random() * characters.length)];
+} 
+console.log(password);*/
  
 
 //while(howlongpassword(input of how many characters they way) > longer than password array) -- keeps adding them together until reach input # 
