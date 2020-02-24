@@ -8,54 +8,56 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
+
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
-// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-var password = "";
-//var pwLower = "abcdefghijklmnopqrstuvwxyz";
-//var pwUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var pwNumber = "0123456789";
-var psChars = "!@#$%^&*";
-//var characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
 
 //click button event to start prompts
 function generatePassword() {
-var pwLength = "How many characters do you want in your password?";
 
-//pwLengthInput will be assigned (=) whatever the user puts in
-var pwLengthInput = prompt(pwLength);
-while (
-  pwLength !== null &&
-  (
-  isNaN(pwLengthInput) ||
-      !((+pwLengthInput >=8 && +pwLengthInput <=128))
-  )
-)
-{
-alert ("Password length must be a number and 8 to 128 characters");
-pwLengthInput = prompt(pwLength);
-}
+  var pwLength = "How many characters do you want in your password?";
 
-//confirm/deny prompts for user choices
+//pwLengthInput will be assigned (=) whatever number the user puts in
+  var pwLengthInput;
+  while (true) {
+      pwLengthInput = parseInt(prompt(pwLength));
+      if (pwLengthInput >=8 && pwLengthInput <=128) {
+          break;
+      }
+      {
+          alert ("Password length must be a number and 8 to 128 characters in length");
+          pwLengthInput = prompt(pwLength);
+      }
+  }
+
+//Variables associated with command prompts that follow list
+var wantLower = confirm("Do you want lowercase letters?");
+var wantUpper = confirm("Do you want uppercase letters?");
+var wantNumber = confirm("Do you want numbers?");
+var wantChars = confirm("Do you want special characters?");
+
+var pwLower = "abcdefghijklmnopqrstuvwxyz";
+var pwUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var pwNumber = "0123456789";
+var pwChars = "!@#$%^&*";
+
 
 var pwLowerConfirm = confirm("Do you wanter lowercase letters?");
 if (pwLowerConfirm === true) {
-//pwLower = ["a", "b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-  /*for (i = 0; i < pwLower.length; i++) {
+
+  for (i = 0; i < pwLower.length; i++) {
   userChoices.push(pwLower[i]);
-}*/
+}
 }
 var pwUpper = confirm("Do you want uppercase letters?");
 if (pwUpper === true) {
-  pwUpper = ["A", "B", "C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+  
   //for (i = 0; i < pwUpper.length; i++) {
     //userChoices.push(pwUpper[i]);
  // }
@@ -70,7 +72,7 @@ var confirmChars = confirm("Do you want special characters?");
 var userChoices = "" 
 console.log(userChoices);
 
-while (password.length < pwLengthInput) {
+while (pwLengthInput < password.length)  {
   password += userChoices[Math.floor(Math.random() * userChoices.length)];
 } 
 console.log(password);
