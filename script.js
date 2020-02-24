@@ -1,13 +1,4 @@
-
-//pseudo code:
-    //need variables -- variables for length of password, arrays for characters and numbers.
-    //click button on page to start titled "new password generator"
-    //a series of prompts, criteria: length is 8-128 characters, prompt for lowercase, prompt for uppercase, prompt for numeric, prompt for special characters - 5 prompts total
-    //would need 5 loops? -- one big one to run all the criteria chose. Ex: if 8 characters were chosen, it would have to run through all options chosen 8 times, with math.random loop (I think). if else statement for lowercase prompt, if the lowercase is selected, then the randomizer would run it, if not selected (cancel), the randomizer would skip this statement, same with numberic and special characters.
-    //random generator from character in a string for each spot 
-// Assignment Code
 var generateBtn = document.querySelector("#generate");
-
 
 function writePassword() {
   var password = generatePassword();
@@ -31,7 +22,7 @@ function generatePassword() {
           break;
       }
       {
-          alert ("Password length must be a number and 8 to 128 characters in length");
+          alert ("Password length can only be a number between 1 and 128");
           pwLengthInput = prompt(pwLength);
       }
   }
@@ -47,48 +38,43 @@ var pwUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var pwNumber = "0123456789";
 var pwChars = "!@#$%^&*";
 
+//This variable will contain the final array/string that the randomizer will choose letters from
+var characterRandom = [];
 
-var pwLowerConfirm = confirm("Do you wanter lowercase letters?");
-if (pwLowerConfirm === true) {
-
-  for (i = 0; i < pwLower.length; i++) {
-  userChoices.push(pwLower[i]);
-}
-}
-var pwUpper = confirm("Do you want uppercase letters?");
-if (pwUpper === true) {
-  
-  //for (i = 0; i < pwUpper.length; i++) {
-    //userChoices.push(pwUpper[i]);
- // }
+//These conditionals and loops will determine which strings are put (aka pushed) in the variable characterRandom from which the randomizer will choose the string it can pull characters from at random
+if (wantLower) {
+  for (var i = 0; i < pwLower.length; i++) {
+      characterRandom.push(pwLower.charAt(i));
+  }
 }
 
-var confirmNumber = confirm("Do you want numbers?");
-var confirmChars = confirm("Do you want special characters?");
+if (wantUpper) {
+  for (var i = 0; i < pwUpper.length; i++) {
+      characterRandom.push(pwUpper.charAt(i));
+  }
 }
-//need to figure out how to input the number the user chooses into the randomizer for how many times it is run
-//need to to figure out how to get users criteria into the userChoices variable and run that along with the length of the chose password
 
-var userChoices = "" 
-console.log(userChoices);
+if (wantNumber) {
+  for (var i = 0; i < pwNumber.length; i++) {
+      characterRandom.push(pwNumber.charAt(i));
+  }
+}
 
-while (pwLengthInput < password.length)  {
-  password += userChoices[Math.floor(Math.random() * userChoices.length)];
+if (wantChars) {
+  for (var i = 0; i < pwChars.length; i++) {
+      characterRandom.push(pwChars.charAt(i));
+  }
+}
+console.log(characterRandom);
+
+//This variable will contain the final generated password
+var password = "";
+
+while (password.length < pwLengthInput)  {
+  password += characterRandom[Math.floor(Math.random() * characterRandom.length)];
 } 
+
+//Write password to console and to the page (return it to page)
 console.log(password);
-
-/*for(var i = 0; i < pwLengthInput; i++){
-  newPassword += userChoices[Math.floor(Math.random() * userChoices.length)];
+return password;         
 }
-return newPassword;
-
-//var password = "";
-//var characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
-/*while (password.length < 10) {
-  password += characters[Math.floor(Math.random() * characters.length)];
-} 
-console.log(password);*/
- 
-
-//while(howlongpassword(input of how many characters they way) > longer than password array) -- keeps adding them together until reach input # 
-//available character array
